@@ -5,7 +5,7 @@ import (
 	"flag"
 	"log"
 
-	"github.com/kahlys/proxy"
+	"github.com/malikbenkirane/tcp_proxy"
 )
 
 var (
