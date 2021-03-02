@@ -42,6 +42,11 @@ func main() {
 
 	log.Println("Proxying from " + p.Addr + " to " + p.Target)
 	if *localTLS {
+		cert, err := tls.LoadX509KeyPair(*localCert, *localKey)
+		if err != nil {
+			log.Fatalf("configuration tls for local connection: %v", err)
+		}
+		p.TLSConfig = &tls.Config{Certificates: []tls.Certificate{cert}} // InsecureSkipVerify: false
 		p.ListenAndServeTLS(*localCert, *localKey)
 	} else {
 		p.ListenAndServe()
