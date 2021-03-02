@@ -37,7 +37,7 @@ func main() {
 		if err != nil {
 			log.Fatalf("configuration tls for target connection: %v", err)
 		}
-		p.TLSConfigTarget = &tls.Config{Certificates: []tls.Certificate{cert}, InsecureSkipVerify: true}
+		p.TLSConfigTarget = &tls.Config{Certificates: []tls.Certificate{cert}, InsecureSkipVerify: false}
 	}
 
 	log.Println("Proxying from " + p.Addr + " to " + p.Target)
